@@ -234,7 +234,7 @@ Template("training-final.csv", row =>
         .print("center at 50%" , "center at 50%")
         .log()
     ,
-    newAudio("audio", row.audio)
+    newAudio("audio", row.audiofile)
         .play()
         .wait()
     ,
@@ -290,7 +290,7 @@ Template("verif-final.csv", row =>
         newTimer("pre-recordings", 100)
             .start()
         ,
-        newAudio("audio", row.audio)
+        newAudio("audio", row.audiofile)
             .play()
             .wait()
         ,
@@ -364,7 +364,7 @@ Template("test-final.csv", row =>
         newTimer("pre-recordings", 100)
             .start()
         ,
-        newAudio("audio", row.audio)
+        newAudio("audio", row.audiofile)
             .play()
             .wait()
         ,
@@ -389,7 +389,7 @@ Template("test-final.csv", row =>
         //,
         //newVar("RT").set(v => Date.now())
     )
-    .log("group", row.group)
+    //.log("group", row.group) no group in test files
     .log("word", row.word)
     .log("backviols", row.backviols)
     .log("nasalviols", row.nasalviols)
