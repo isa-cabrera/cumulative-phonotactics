@@ -2,11 +2,11 @@ PennController.ResetPrefix(null)
 
 DebugOff() // don't show log and errors
 
-Sequence(//"instructions", // welcome, instructions
-        randomize("training"), // training
+Sequence("instructions", randomize("training"), "verif-instr", randomize("verif"), "test-instr", randomize("testing"), "language-survey", "completion") // welcome, instructions
+        //randomize("training"), // training
         //"verif-instr", randomize("verif"), // verification: instructions and trials
         //"test-instr", randomize("testing"), // testing: instructions and trials
-        "language-survey", "completion") // language background and completion 
+        //"language-survey", "completion") // language background and completion 
 
 newTrial("welcome",
     defaultText
@@ -24,7 +24,7 @@ newTrial("welcome",
         .bold()
         .center()
         .settings.css("font-size", "24")
-    ,newText("<p>Testing phonotactic learning<p>")
+    ,newText("<p>Learning phonotactics from artificial grammars<p>")
         .italic()
         .center()
         .settings.css("font-size", "18")
@@ -35,11 +35,12 @@ newTrial("welcome",
         .wait()
     ,getButton("continue").remove()
     
-    ,newText("<p>Why is this study being done?<p>").bold().center().settings.css("font-size", "24")
-    ,newText("<p> Speakers of a language are believed to have abstract knowledge of the grammatical rules of their language, including rules about the sound structure of words.  This study investigates the relationship between that grammatical knowledge and other mental processes, such as memory or attention.  If language abilities and memory abilities rely on the same store of mental resources, then holding something in memory could interfere with speakers’ ability to use their linguistic knowledge.  However, if linguistic knowledge is separated from the rest of cognition in its own 'module' as has been claimed by Fodor (1983) and others, then we would not expect a memory task to interfere with participants' ability to use their linguistic knowledge.<p>").settings.css("font-size", "18")
+    ,newText("<p>Why is this study being done?<p>")
+    .bold().center().settings.css("font-size", "24")
+    ,newText("<p>Speakers of a language are believed to have abstract knowledge of the grammatical rules of their language, including rules about the sound structure of words.  This study investigates how speakers of any language learn new sound patterns from an artificial, made-up language by simply listening to words with different sound patterns. <p>").settings.css("font-size", "18")
     ,newText("<p>What will happen if I take part in this research study?<p>").bold().center().settings.css("font-size", "24")
     ,newText("<p>    If you volunteer to participate in this study, the researcher will ask you to do the following:<p>").settings.css("font-size", "18")
-    ,newText("<p>    •	Complete a language background questionnaire<p> <p>     •	Listen to a robot voice invent English-like words, and pronounce them while your voice is recorded. <p> <p>     •	You may be asked to rate other people’s pronounciations of those same words <p> <p>     •	You may be asked to remember short words for about 10 seconds <p>").settings.css("font-size", "18")
+    ,newText("<p>    •	Complete a language background questionnaire<p> <p>     •	Listen to some words from a simple invented language. <p> <p>     •	Decide if some new words you hear belong to that language or not. <p>").settings.css("font-size", "18")
     ,newButton("continue6","Next")
         .center()
         .print()
@@ -47,11 +48,11 @@ newTrial("welcome",
     ,getButton("continue6").remove()
     
     ,newText("<p>How long will I be in the research study?<p>").bold().center().settings.css("font-size", "24")
-    ,newText("<p>    Participation will take a total of about an hour.<p>").settings.css("font-size", "18")
+    ,newText("<p>    Participation will take a total of about 20 to 30 minutes.<p>").settings.css("font-size", "18")
     ,newText("<p>Are there any potential risks or discomforts that I can expect from this study?<p>").bold().center().settings.css("font-size", "24")
     ,newText("<p>    There are no anticipated risks or discomforts.<p>").settings.css("font-size", "18")
     ,newText("<p>Are there any potential benefits if I participate?<p>").bold().center().settings.css("font-size", "24")
-    ,newText("<p>    You will not directly benefit from your participation in the research.<p> <p>The results of the research may help us understand the relationship between linguistic knowledge and other areas of cognition, and may especially help us understand how language uses cognitive resources that are shared with other systems such as memory, attention, auditory processing, etc.<p>").settings.css("font-size", "18")
+    ,newText("<p>    You will not directly benefit from your participation in the research.<p> <p>The results of the research may help us understand how adults hear and learn new languages, and the kinds of native language biases speakers bring to the task of learning a new language. <p>").settings.css("font-size", "18")
         ,newButton("continue5","Next")
         .center()
         .print()
@@ -68,14 +69,16 @@ newTrial("welcome",
         .center()
         .settings.css("font-size", "24")
     ,
-    newText("<p>    You will receive 1 SONA credit for this study<p>")
+    newText("<p>    You will receive 1 SONA credit for this study.<p>")
         .settings.css("font-size", "18")
     
-        ,newButton("continue4","Next")
+    ,
+    newButton("continue4","Next")
         .center()
         .print()
         .wait()
-    ,getButton("continue4").remove()
+    ,
+    getButton("continue4").remove()
     ,
     newText("<p>Will information about me and my participation be kept confidential?<p>")
         .bold()
@@ -93,11 +96,13 @@ newTrial("welcome",
     newText("<p>    •	You can choose whether or not you want to be in this study, and you may withdraw your consent and discontinue participation at any time.<p> <p>    •	Whatever decision you make, there will be no penalty to you, and no loss of benefits to which you were otherwise entitled.<p> <p>   •	You may refuse to answer any questions that you do not want to answer and still remain in the study.<p>")
         .settings.css("font-size", "18")
     
-        ,newButton("continue3","Next")
+    ,
+    newButton("continue3","Next")
         .center()
         .print()
         .wait()
-    ,getButton("continue3").remove()
+    ,
+    getButton("continue3").remove()
     ,
     newText("<p>Who can I contact if I have questions about this study?<p>")
         .bold()
@@ -108,7 +113,7 @@ newTrial("welcome",
         .bold()
         .settings.css("font-size", "20")
     ,
-    newText("<p>    If you have any questions, comments or concerns about the research, you can talk to the one of the researchers. Please contact: <p><p><p>Dr. Claire Moore-Cantwell<p><p>559-760-7071<p><p>moore.cantwell@ucla.edu<p>")
+    newText("<p>    If you have any questions, comments or concerns about the research, you can talk to the one of the researchers. Please contact: <p><p><p>Dr. Marisabel Cabrera<p><p>310-825-0634<p><p>isacabrera@ucla.edu<p>")
         .settings.css("font-size", "18")
     ,
     newText("<p>•	UCLA Office of the Human Research Protection Program (OHRPP):<p>")
@@ -122,17 +127,11 @@ newTrial("welcome",
         .center()
         .print()
         .wait()
-    ,getButton("continue2").remove()
-    ,
-    newText("<p>•	Use of recordings<p>")
-        .bold()
-        .settings.css("font-size", "20")
-    ,
-    newText("<p>    Your voice will be recorded in this study, and we may want to use your recordings in presentations of the results of this study, such as at conferences or in web publication of the results.  Recordings will always be presented anonymously and will not be attached to your name or any other identifying information.  Please indicate whether you would like your recordings to be used for this purpose.  If you choose ‘No’, no-one besides the research team will hear or have access to your recordings.  Instead, only measurements taken from your recordings will be presented.<p>")
-        .settings.css("font-size", "18")
-    ,
-    newDropDown("choice", "Answer")
-        .settings.add("Yes","No")
+)
+
+newTrial("subject-code",
+    defaultText
+        .center()
         .print()
     ,
     newText("<p> Please input your Subject Code, found in the 'comments' field on your SONA signup:<p>")
@@ -145,74 +144,93 @@ newTrial("welcome",
     newTextInput("inputID")
        .print()
     ,
+    newText("sp1", " ")
+    ,
     newButton("Start")
         .print()
         .wait(
             getTextInput("inputID")
                 .test.text(/.+/)
                     .failure(newText("<p>You must input a code in order to receive credit.  Find this in 'comments' on your SONA account.</p>").print()))
+    ,
+    newVar("ID")
+        .global()
+        .set( getTextInput("inputID") )
 )
+.log( "sona-ID" , getVar("sona-ID") )
 
 // instruction
 newTrial("instructions",
     defaultText
         .center()
         .print()
+        .settings.css("font-size", "20")
     ,
-    newText("1", "Experiment instructions:")
+    newText("1", "Experiment instructions")
         .bold()
+        .settings.css("font-size", "24")
     ,
     newText("sp1", " ")
     ,
-    newText("2", "In this experiment, you will listen to a sequence of words from a simple toy language.")
+    newText("2", "In this experiment, you will be learning a simple language by listening to words of that language.")
     ,
     newText("sp1", " ")
     ,
-    newText("3", "After learning this language, your task is to decide if some new words you hear are likely words of the simple language you learned.")
+    newText("3", "After hearing words from this language, you will be tested on your knowledge of that language.")
         .bold()
     ,
     newText("sp2", " ")
     ,
-    newText("3", "You should decide this even if one of the two words has some noise covering some of its sounds, or even if the words don’t mean anything to you. ")
-    ,
-    newText("sp3", " ")
-    ,
     newText("4", "Please provide your responses as quickly as possible.")
-        .bold()
+    ,
+    newText("sp2", " ")
+    ,
+    newButton("continue4","Next")
+        .center()
+        .print()
+        .wait()
+    ,
+    getButton("continue4").remove()
+    ,
+    newText("sp2", " ")
+    ,
+    newText("5", "Before we begin, adjust your volume to your desired level. Click the button below to listen and adjust your volume. ")
     ,
     newText("sp4", " ")
-    ,
-    newText("5", "Before we begin, adjust your volume to your desired level. Click the button below to listen. ")
-    ,
-    newText("sp5", " ")
     ,
     newButton("button-listen", "adjust volume")
         .center()
         .print()
         .wait()
     ,
-    newAudio("audio-instr", "audio-instr-ruth.mp3")
+    newAudio("audio-instr", "audio-instr-ruth.wav")
         .play()
         .wait()
     ,
-    newText("sp6", " ")
-    ,
-    newText("6", "Is the word you heard a word of English?")
-        .bold()
-    ,
-    newText("7", "(Press 'a' for 'yes' and 'l' for 'no')")
-        .italic()
-    ,
-    newKey("response", "AL")
-            .log()
-            .wait()
-    ,
-    newText("sp7", " ")
-    ,
-    newText("8", "The experiment will now begin. You will now listen to words from the simple language so you familiarize yourself with the language, and then provide your responses. There will be a brief questionnaire after you complete the experiment. Click the button below to start the experiment.")
-        .bold()
-    ,
     newText("sp8", " ")
+    ,
+    newText("9", "You will now listen to words from the simple made-up language. ")
+    ,
+    newText("sp9", " ")
+    ,
+    newText("9", "You should listen to these words carefully so you familiarize yourself with the language and you are able to complete the rest of the experiment.")
+        .bold()
+    ,
+    newText("sp9", " ")
+    ,
+    newText("9", "If you feel like you're getting bored in this part of the experiment, try to count how many unique words you can find. ")
+        .bold()
+    ,
+    newText("sp9", " ")
+    ,
+    newText("10", "There will be a brief language background questionnaire after you complete the experiment. Please do not exit the experiment before completing this questionnaire. ")
+    ,
+    newText("sp10", " ")
+    ,
+    newText("11", "When you are ready, click the button below to start the experiment.")
+    .bold()
+    ,
+    newText("sp11", " ")
     ,
     newButton("button-cont", "start")
         .center()
@@ -238,7 +256,7 @@ Template("training-final.csv", row =>
         .play()
         .wait()
     ,
-    newTimer("isi", 250)
+    newTimer("isi", 150)
         .start()
         .wait()
     ,
@@ -259,16 +277,29 @@ newTrial("verif-instr",
     defaultText
         .center()
         .print()
+        .settings.css("font-size", "20")
     ,
-    newText("1", "VERIFICATION")
+    newText("v1", "You should now be familiar with the made-up language.")
+    ,
+    newText("vsp1", " ")
+    ,
+    newText("v2", "In this stage of the experiment, you will hear words that you heard or did not hear previously. ")
+    ,
+    newText("vsp2", " ")
+    ,
+    newText("v3", "Your task is to decide if the given word is a word you heard while you were learning the language. ")
         .bold()
     ,
-    newText("sp8", " ")
+    newText("vsp3", " ")
     ,
-    newText("1", "VERIFICATION")
+    newText("v4", "Press 'a' if you heard the word before (YES), and 'l' if you did NOT hear the word before (NO).")
+    ,
+    newText("vsp4", " ")
+    ,
+    newText("v5", "When you are ready, click the button below to continue with the experiment. ")
         .bold()
     ,
-    newText("sp8", " ")
+    newText("vsp5", " ")
     ,
     newButton("button", "continue experiment")
         .center()
@@ -277,9 +308,7 @@ newTrial("verif-instr",
 )
 
 Template("verif-final.csv", row =>
-    newTrial("verif",
-        // select masked item with random snr
-        //masking = [row.mask0, row.mask4, row.mask8, row.mask_4, row.mask_8].sort(v => 0.5-Math.random())
+    newTrial("verif-trials",
         
         // start trial
         newText("fixcross", "+") // create a fixation cross
@@ -287,24 +316,25 @@ Template("verif-final.csv", row =>
             .print("center at 50%" , "center at 50%")
             .log()
         ,
-        newTimer("pre-recordings", 100)
+        newTimer("pre-recordings", 75)
             .start()
         ,
         newAudio("audio", row.audiofile)
             .play()
             .wait()
         ,
-        newTimer("post-recording", 100)
+        newTimer("post-recording", 75)
             .start()
             .wait()
         ,
         getText("fixcross")
             .remove()
         ,
-        newText("instr", "(Press 'a' for 'yes' and 'l' for 'no')")
+        newText("instr", "(Press 'a' for YES and 'l' for NO)")
             .center()
             .italic()
-            .print()
+            .print("center at 50%" , "center at 50%")
+            .settings.css("font-size", "24")
         ,
         newKey("response", "AL")
             .log() // log participant response
@@ -334,15 +364,20 @@ newTrial("test-instr",
         .center()
         .print()
     ,
-    newText("1", "TESTING.")
+    newText("1", "In this last part of the experiment, you will hear new words that you have not heard previously. ")
         .bold()
     ,
     newText("sp8", " ")
     ,
-    newText("1", "TESTING.")
+    newText("v3", "Your task is to decide if the given word is a word that sounds like it could belong to the language you learned.")
         .bold()
     ,
     newText("sp8", " ")
+    ,
+    newText("v5", "When you are ready, click the button below to continue with the experiment. ")
+        .bold()
+    ,
+    newText("vsp5", " ")
     ,
     newButton("button", "continue experiment")
         .center()
@@ -361,14 +396,14 @@ Template("test-final.csv", row =>
             .print("center at 50%" , "center at 50%")
             .log()
         ,
-        newTimer("pre-recordings", 100)
+        newTimer("pre-recordings", 75)
             .start()
         ,
         newAudio("audio", row.audiofile)
             .play()
             .wait()
         ,
-        newTimer("post-recording", 100)
+        newTimer("post-recording", 75)
             .start()
             .wait()
         ,
@@ -379,6 +414,7 @@ Template("test-final.csv", row =>
             .center()
             .italic()
             .print()
+            .settings.css("font-size", "24")
         ,
         newKey("response", "AL")
             .log() // log participant response
@@ -389,7 +425,7 @@ Template("test-final.csv", row =>
         //,
         //newVar("RT").set(v => Date.now())
     )
-    //.log("group", row.group) no group in test files
+    //.log("group", row.group)
     .log("word", row.word)
     .log("backviols", row.backviols)
     .log("nasalviols", row.nasalviols)
@@ -402,6 +438,7 @@ newTrial("language-survey",
         .bold()
         .center()
         .print()
+        .settings.css("font-size", "18")
     ,
     newText(" ").print()
     ,
